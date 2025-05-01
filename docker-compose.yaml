@@ -2,6 +2,7 @@ name: mytestapp
 
 services:
   dev-web-app:
+    container_name: dev-web-app
     build:
       context: .
       dockerfile: ./docker/dev-docker.dockerfile
