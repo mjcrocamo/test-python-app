@@ -1,0 +1,24 @@
+name: mytestapp
+
+services:
+  dev-web-app:
+    build:
+      context: .
+      dockerfile: ./docker/dev-docker.dockerfile
+    ports:
+      - 8087:80
+    volumes:
+      - ./:/app
+    networks:
+      - web-apps
+
+  postgres-db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: example
+      POSTGRES_DB: exampledb
+    networks:
+      - web-apps
+
+networks:
+  web-apps:
